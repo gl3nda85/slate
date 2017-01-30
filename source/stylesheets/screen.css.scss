@@ -389,8 +389,10 @@ html, body {
   }
 
   h3, h4, h5, h6 {
+    border-top: 1px solid #ccc;
     @extend %header-font;
     font-size: 15px;
+    padding-top: 1.2em;
     margin-top: 2.5em;
     margin-bottom: 0.8em;
   }
