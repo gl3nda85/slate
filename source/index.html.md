@@ -647,7 +647,87 @@ Request Part | Value
 
 
 ### Save Transaction
+
+>Json Request Via POST
+
+```json
+{
+	"sessionId":"1086953601",
+    "productId":"123",
+    "transactionId":"3424243",
+    "type":"",
+    "exceptions": ""
+}
+```
+
+>Json Response
+
+```json
+{
+  "api": "user/signup",
+  "status": "OK",
+  "apiMessage": "User registered successfully.",
+  "packageData": {
+    "txnId": "14214124",
+    "subscriptionId": "213121244",
+    "userId": "11567",
+    "termiteAlarm": "",
+    "expireDate": ""
+  }
+}
+```
+<p>Description</p>
+
+<p>Function</p>
+Request Part | Value
+---------- | -------
+`Type` | POST
+`URL` | /user/saveTransaction
+
 ### Subscription Details
+
+>Json Request Via POST
+
+```json
+{
+	"sessionId":"1086953601",
+    "type":"Single"
+}
+```
+
+>Json Response
+
+```json
+{
+  "api": "user/getSubscriptionDetails",
+  "status": "OK",
+  "apiMessage": "Subscription package fetched successfully",
+  "subscriptions": [
+    {
+      "id": "4",
+      "subscriptionId": "com.termite.1search",
+      "packName": "1 Search Credit",
+      "description": "1 Consumable Search Credit",
+      "userType": "",
+      "cost": "1.49",
+      "searchCredit": "1",
+      "termiteAlarm": "0",
+      "packType": "Single",
+      "isDisabled": "0"
+    }
+  ]
+}
+```
+<p>Description</p>
+
+<p>Function</p>
+Request Part | Value
+---------- | -------
+`Type` | POST
+`URL` | /user/saveTransaction
+
+
+
 ### Current Status
 
 >Json Request Via Post
@@ -727,8 +807,106 @@ Request Part | Value
 `URL` | /user/getPurchaseHistory
 
 ### Purchase Subscription
+
+>Json Request Via POST
+
+```json
+{
+  "sessionId": "76dc366a842d8ed27d27e7c44d77ef1102bf8b31",
+  "productId": "1",
+  "exceptions": []
+}
+```
+>Json Response
+
+
+```json
+{
+  "api": "user/buySubscription",
+  "status": "OK",
+  "apiMessage": "You Can buy This Package.",
+  "expire": "0",
+  "buy": "1"
+}
+```
+
+<p>Description</p>
+
+Returns a list of user purchasses, the exception param is the id's of purchases you dont want.
+
+<p>Function</p>
+Request Part | Value
+---------- | -------
+`Type` | POST
+`URL` | /user/buySubscription
+
 ### Get User Action
+
+>Json Request Via POST
+
+```json
+{
+	"sessionId":"b791d232d18821d682a4f173c4b01d5d16eaada2",
+    "action":"click",
+    "reportId":"9200"
+}
+```
+>Json Response
+
+
+```json
+{
+  "api": "user/getUserAction",
+  "status": "OK",
+  "apiMessage": "Action Added Sucessfully"
+}
+```
+
+<p>Description</p>
+
+Returns a list of user notifications, the exception param is the id's of notifications you dont want.
+
+<p>Function</p>
+Request Part | Value
+---------- | -------
+`Type` | POST
+`URL` | /user/getUserAction
+
 ### Count Notifications
+
+>Json Request Via POST
+
+```json
+{
+	"sessionId":"b791d232d18821d682a4f173c4b01d5d16eaada2",
+    "action":"click",
+    "reportId":"9200"
+}
+```
+>Json Response
+
+
+```json
+{
+  "api": "user/countNotification",
+  "status": "OK",
+  "apiMessage": "Notifications fetched successfully",
+  "data": [],
+  "notificationCount": 0
+}
+```
+
+<p>Description</p>
+
+Returns a list of user notifications, the exception param is the id's of notifications you dont want.
+
+<p>Function</p>
+Request Part | Value
+---------- | -------
+`Type` | POST
+`URL` | /user/countNotification
+
+
 ### Reset User Badage
 
 >Json Request Via POST
@@ -761,20 +939,582 @@ Request Part | Value
 ### Restore Transaction
 ### Investor Search Count
 
+>Json Request Via Post
+
+```
+{
+    "sessionId": "3075bf3695c76340f2d294dc87a58389ef0bda9b"
+}
+
+```
+
+>Json Response
+
+```
+{
+  "api": "post/getInvestorSearchCount",
+  "status": "OK",
+  "apiMessage": "User search count fetched successfully",
+  "searchCount": "1"
+}
+
+```
+<p>Description</p>
+
+<p>Function</p>
+Request Part | Value
+---------- | -------
+`Type` | POST
+`URL` | /user/getInvestorSearchCount
+
 ## Inspector Fuctions
 ### Get Credit Count
+
+>Json Request Via Post
+
+```
+{
+    "sessionId": "3075bf3695c76340f2d294dc87a58389ef0bda9b"
+}
+
+```
+
+>Json Response
+
+```
+{
+  "api": "inspector/getCreditCount",
+  "status": "OK",
+  "apiMessage": "Inspector credit count fetched successfully",
+  "creditCount": "2729"
+}
+```
+<p>Description</p>
+
+
+Used to show the remaining alarm credits for the Inspectors Business Admin account.
+
+<p>Function</p>
+Request Part | Value
+---------- | -------
+`Type` | POST
+`URL` | /user/getCreditCount
+
+
 ### Add Report
+
+>Json Request Via Post
+
+```
+{
+	"sessionId":"e67a7a0f51a08c9d301ec191a355219a72d5c883",
+    "latitude":"-37.4029541",
+    "longitude":"144.9731761",
+    "locationTitle":"pas",
+    "refrenceId": "245670",
+    "termiteFound": "1",
+    "termiteInPremises":"0",
+    "streetNumber": "14 pretty sally drive",
+    "locality":"wallan",
+    "state":"victoria",
+    "country":"australia",
+    "postalCode":"3756"
+}
+
+```
+
+>Json Response
+
+```
+{
+  "api": "inspector/addInspectorReport",
+  "status": "OK",
+  "apiMessage": "Inspector report added successfully",
+  "sessionId": "e67a7a0f51a08c9d301ec191a355219a72d5c883",
+  "creditCount": "2729",
+  "userCount": 4,
+  "isNotify": 1
+}
+```
+<p>Description</p>
+
+
+This endpoint is used by Inspectors to add a termite report to Termite Registers system. It also saves the notification ready to be sent to the user with the next api call.
+<p>Function</p>
+
+
+Request Part | Value
+---------- | -------
+`Type` | POST
+`URL` | /user/addInspectorReport
+
+
 ### Send Notification
+
+>Json Request Via Post
+
+```
+{
+	"sessionId":"e67a7a0f51a08c9d301ec191a355219a72d5c883",
+    "latitude":"-37.4029541",
+    "longitude":"144.9731761",
+    "locationTitle":"pas",
+    "refrenceId": "245670",
+    "termiteFound": "1",
+    "termiteInPremises":"0",
+    "streetNumber": "14 pretty sally drive",
+    "locality":"wallan",
+    "state":"victoria",
+    "country":"australia",
+    "postalCode":"3756"
+}
+
+```
+
+>Json Response
+
+```
+{
+  "api": "inspector/sendNotification",
+  "status": "OK",
+  "apiMessage": "Notification sent.",
+  "creditCount": 2725
+}
+```
+<p>Description</p>
+
+This endpoint is used by Inspectors send the notifications previously created to users that have alarms in a 500m radius of the report.
+
+<p>Function</p>
+Request Part | Value
+---------- | -------
+`Type` | POST
+`URL` | /user/sendNotification
 ### Report Search
-### Inspector Company Details
-### Get Company Detail
+
+>Json Request Via Post
+
+```
+{
+	"sessionId":"c2873a9a60c026fc43fecd6675964c05ce64b567",
+    "latitude":"-37.4029541",
+    "longitude":"144.9731761",
+    "keyword":"14 pretty sally drive wallan",
+    "exceptions": []
+}
+
+```
+
+>Json Response
+
+```
+{
+  "api": "inspector/inspectorReportSearch",
+  "status": "OK",
+  "apiMessage": "Records fetched successfully",
+  "reports": [
+    {
+      "id": "522",
+      "termiteFound": "1",
+      "latitude": "-37.40295410",
+      "longitude": "144.97317610",
+      "businessName": "Sample",
+      "termiteInPremises": "0",
+      "comment": "Termites Found",
+      "created_at": "2017-02-04 13:53:47",
+      "businessOwnerId": "1297",
+      "address": "pas",
+      "locationTitle": "pas"
+    }
+  ],
+  "reportCount": 1,
+  "termiteCount": 1,
+  "businessOwnerId": "1297",
+  "searchCount": 3,
+  "lastSearchDate": "2017-02-04"
+}
+```
+<p>Description</p>
+
+This endpoint is used by Inspectors send the notifications previously created to users that have alarms in a 500m radius of the report.
+
+<p>Function</p>
+Request Part | Value
+---------- | -------
+`Type` | POST
+`URL` | /user/inspectorReportSearch
+
+### Get Company Details
+
+>Json Request Via Post
+
+```
+{
+	"sessionId":"c2873a9a60c026fc43fecd6675964c05ce64b567",
+    "businessOwnerId":"1297"
+}
+
+```
+
+>Json Response
+
+```
+{
+  "api": "inspector/getCompanyDetail",
+  "status": "OK",
+  "apiMessage": "Records fetched successfully",
+  "business": [
+    {
+      "businessName": "Sample",
+      "email": "biz1@termiteregister.com.au",
+      "phone1": "15204679470",
+      "isDisabled": "0",
+      "image": "https://s3-ap-southeast-2.amazonaws.com/termite-staging/ecard/57c7cb76888b98.90986782.jpg"
+    }
+  ]
+}
+```
+<p>Description</p>
+
+This endpoint is used by Inspectors send the notifications previously created to users that have alarms in a 500m radius of the report.
+
+<p>Function</p>
+Request Part | Value
+---------- | -------
+`Type` | POST
+`URL` | /user/getCompanyDetail
+
+
 ### Search Count
+
+>Json Request Via Post
+
+```
+{
+    "sessionId": "3075bf3695c76340f2d294dc87a58389ef0bda9b"
+}
+
+```
+
+>Json Response
+
+```
+{
+  "api": "inspector/getInspectorSearchCount",
+  "status": "OK",
+  "apiMessage": "User search count fetched successfully",
+  "searchCount": "5",
+  "lastSearchDate": "2017-02-04"
+}
+
+```
+<p>Description</p>
+
+<p>Function</p>
+Request Part | Value
+---------- | -------
+`Type` | POST
+`URL` | /user/getInspectorSearchCount
+
+
 ## User Property Functions
 ### Add Property
+
+>Json Request Via Post
+
+```
+{
+	"sessionId":"527a777f438df98dfe449cd7b802af8de9a7c85b",
+    "address":"14 pretty sally drive wallan",
+    "latitude":"-37.4029541",
+    "longitude":"144.9731761",
+    "propertyName":"pas",
+    "propertyAddress":"14 pretty sally",
+    "locality":"wallan",
+    "state":"victoria",
+    "country":"australia",
+    "postalCode":"3756",
+    "streetAddress":"14 pretty sally drive"
+}
+```
+
+>Json Response
+
+```
+{
+  "api": "userProperty/addProperty",
+  "status": "error",
+  "errorCode": 99,
+  "apiMessage": "You do not have enough termite alarm credit, Please purchase a new subscription plan."
+}
+
+```
+<p>Description</p>
+
+<p>Function</p>
+Request Part | Value
+---------- | -------
+`Type` | POST
+`URL` | /userProperty/addProperty
 ### Delete Property
+
+>Json Request Via Post
+
+```
+{
+	"sessionId":"527a777f438df98dfe449cd7b802af8de9a7c85b",
+	"propertyId": "65910"
+}
+
+```
+
+>Json Response
+
+```
+{
+  "api": "userProperty/deleteProperty",
+  "status": "OK",
+  "apiMessage": "User Property deleted successfully"
+}
+
+```
+<p>Description</p>
+
+<p>Function</p>
+Request Part | Value
+---------- | -------
+`Type` | POST
+`URL` | /userProperty/deleteProperty
+
+
 ### Get User Property
+
+>Json Request Via Post
+
+```
+{
+    "sessionId": "3075bf3695c76340f2d294dc87a58389ef0bda9b"
+}
+
+```
+
+>Json Response
+
+```
+{
+  "api": "userProperty/getUserProperty",
+  "status": "OK",
+  "apiMessage": "Records fetched successfully",
+  "properties": [
+    {
+      "address": "14 pretty sally",
+      "isDisabled": "0",
+      "latitude": "-37.40295410",
+      "longitude": "144.97317610",
+      "propertyName": "pas",
+      "expireDate": null,
+      "created_at": "2017-01-30 04:22:32",
+      "image": null,
+      "thumb": null,
+      "propertyId": "65910",
+      "days": null
+    },
+    {
+      "address": "9 Pontisford Ct Kilmore VIC 3764 Australia",
+      "isDisabled": "0",
+      "latitude": "-37.29195638",
+      "longitude": "144.93996888",
+      "propertyName": "lol",
+      "expireDate": "2017-08-18 04:07:23",
+      "created_at": "2016-09-06 01:47:48",
+      "image": "https://staging.termiteregister.com.au/images/user/57ce2044acaa63.07345327.jpg",
+      "thumb": "https://staging.termiteregister.com.au/images/user/thumb/57ce2044acaa63.07345327.jpg",
+      "propertyId": "65613",
+      "days": "195"
+    }
+  ],
+  "userType": "Investor"
+}
+
+```
+<p>Description</p>
+
+<p>Function</p>
+Request Part | Value
+---------- | -------
+`Type` | POST
+`URL` | /userProperty/getUserProperty
+
+
 ### Get Expired User Property
+
+>Json Request Via Post
+
+```
+{
+	"sessionId":"527a777f438df98dfe449cd7b802af8de9a7c85b"
+}
+
+```
+
+>Json Response
+
+```
+{
+  "api": "userProperty/getExpiredProperties",
+  "status": "OK",
+  "apiMessage": "User Property fetched successfully",
+  "propertyList": []
+}
+
+```
+<p>Description</p>
+
+<p>Function</p>
+Request Part | Value
+---------- | -------
+`Type` | POST
+`URL` | /userProperty/getExpiredProperties
+
+
 ## Termite Report Function
-### Get Report
+### Get Report by property id
+
+>Json Request Via Post
+
+```
+{
+	"sessionId":"1477f498e0dca9ae721b53ac5d02bcd436e7338f",
+	"propertyId":"65911",
+	"exceptions":[]
+}
+
+```
+
+>Json Response
+
+```
+{
+  "api": "termiteReport/getReportbyPropertyId",
+  "status": "OK",
+  "apiMessage": "Records fetched successfully",
+  "reports": [
+    {
+      "name": "Sample",
+      "businessOwnerId": "1297",
+      "id": "522",
+      "latitude": "-37.40295410",
+      "longitude": "144.97317610",
+      "address": "pas",
+      "locationTitle": "pas",
+      "comment": "Termites Found",
+      "termiteFound": "1",
+      "termiteInPremises": "0",
+      "created_at": "2017-02-04 13:53:47"
+    }
+  ]
+}
+
+```
+<p>Description</p>
+
+<p>Function</p>
+Request Part | Value
+---------- | -------
+`Type` | POST
+`URL` | /termiteReport/getReportbyPropertyId
+
+
 ### Get Inspector Report
+
+>Json Request Via Post
+
+```
+{
+	"sessionId":"2d94c475cea6f50613a385ab490e30931b275b0e",
+    "exceptions":[]
+}
+
+```
+
+>Json Response
+
+```
+{
+  "api": "termiteReport/getInspectorReport",
+  "status": "OK",
+  "apiMessage": "Records fetched successfully",
+  "reports": [
+    {
+      "id": "522",
+      "termiteFound": "1",
+      "comment": "Termites Found",
+      "refrenceId": "245670",
+      "created_at": "2017-02-04 13:53:47",
+      "termiteInPremises": "0",
+      "latitude": "-37.40295410",
+      "longitude": "144.97317610",
+      "address": "pas",
+      "locationTitle": "pas"
+    }
+  ]
+}
+
+```
+<p>Description</p>
+
+<p>Function</p>
+Request Part | Value
+---------- | -------
+`Type` | POST
+`URL` | /termiteReport/getReportbyPropertyId
+
+
 ### Get Report By Lat Long
+
+>Json Request Via Post
+
+```
+{
+	"sessionId":"1477f498e0dca9ae721b53ac5d02bcd436e7338f",
+    "latitude":"-37.4029541",
+    "longitude":"144.9731761",
+    "exceptions":[]
+}
+
+```
+
+>Json Response
+
+```
+{
+  "api": "termiteReport/getReportbyLatLong",
+  "status": "OK",
+  "apiMessage": "Records fetched successfully",
+  "reports": [
+    {
+      "id": "522",
+      "termiteFound": "1",
+      "termiteInPremises": "0",
+      "latitude": "-37.40295410",
+      "longitude": "144.97317610",
+      "comment": "Termites Found",
+      "created_at": "2017-02-04 13:53:47",
+      "name": "Sample",
+      "businessOwnerId": "1297",
+      "address": "pas"
+    }
+  ],
+  "termiteCount": 1,
+  "reportCount": 1,
+  "searchCount": 0
+}
+
+```
+<p>Description</p>
+
+<p>Function</p>
+Request Part | Value
+---------- | -------
+`Type` | POST
+`URL` | /termiteReport/getReportbyPropertyId
